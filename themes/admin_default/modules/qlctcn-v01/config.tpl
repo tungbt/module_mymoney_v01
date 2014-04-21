@@ -6,20 +6,26 @@
 	
 	
 </style>
-<form action="" method="post" onsubmit="return checkvalue()">
+<span style="color: red">{ERROR}</span>
+<form action="http://localhost/film/admin/index.php?language=vi&nv=qlctcn-v01&op=config" method="post" onsubmit="return checkvalue()">
 <!--  ------------------------------------------------------------------------------ -->
 	{LANG.config_101}<br />
 	{LANG.config_102}
 	<ol>
 		<!-- BEGIN: asset_type -->
-		<li class="ds">{ASSET_TYPE.val}</li>
+		<li class="ds">{ASSET_TYPE.val} 
+			<a href="http://localhost/film/admin/index.php?language=vi&nv=qlctcn-v01&op=config&edit=1&id={ASSET_TYPE.id}">Edit</a>
+			<a href="http://localhost/film/admin/index.php?language=vi&nv=qlctcn-v01&op=config&delete=1&id={ASSET_TYPE.id}">Xoa</a>
+			
+			</li>
 		<!-- END: asset_type -->
 	</ol>
 	{LANG.config_103}
 	<table>
 		<tr>
 			<td>
-			<input type="text" name="txt_asset_type" placeholder="{LANG.config_105}" />
+			<input type="hidden" name="id" value="{DATA.id}"/>
+			<input type="text" value="{DATA.name}" name="txt_asset_type" placeholder="{LANG.config_105}" />
 			<input name="submit_asset_type" type="submit" value="{LANG.config_104}" />
 			</td>
 		</tr>
