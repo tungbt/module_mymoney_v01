@@ -8,15 +8,16 @@
  * @Createdate 2-10-2010 20:59
  */
 
-if( ! defined( 'NV_IS_FILE_MODULES' ) ) die( 'Stop!!!' );
+if( ! defined( 'NV_IS_FILE_MODULES' ) )
+	die( 'Stop!!!' );
 
-$sql_drop_module = array();
+$sql_drop_module = array( );
 // Tên bảng
 // nv4_ngonngu_tenmodule_phanmorong
 //nv4_vi_qlctcn_v01_asset_type
 
 $result = $db->query( 'SHOW TABLE STATUS LIKE ' . $db->quote( $db_config['prefix'] . '\_' . $lang . '\_' . $module_data . '\_%' ) );
-while( $item = $result->fetch() )
+while( $item = $result->fetch( ) )
 {
 	$sql_drop_module[] = 'DROP TABLE IF EXISTS ' . $item['name'];
 }
@@ -28,9 +29,8 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
   `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM";
-	
-	
-	$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_borrow (
+
+$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_borrow (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nv4_users_userid` mediumint(8) unsigned NOT NULL,
   `nv4_mdl1_borrow_type_id` int(11) NOT NULL,
@@ -52,17 +52,3 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
   KEY `fk_nv4_mdl1_borrow_nv4_mdl1_asset_type1_idx` (`nv4_mdl1_asset_type_id`),
   KEY `fk_nv4_mdl1_borrow_nv4_mdl1_his_pay1_idx` (`nv4_mdl1_his_pay_id`)
 	) ENGINE=MyISAM";
-	
-	$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_cat (
-
-	) ENGINE=MyISAM";
-	
-	$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_cat (
-
-	) ENGINE=MyISAM";
-	
-	$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_cat (
-
-	) ENGINE=MyISAM";
-
-?>
